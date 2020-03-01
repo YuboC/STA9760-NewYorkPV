@@ -1,9 +1,9 @@
 # New York City Parking Violations
 ```
 This project will load and then analyze a dataset containing millions of NYC 
-parking violations since January 2016. By completing this exercise, I will 
-demonstrate mastery of principles of containerization, terminal navigation, 
-python scripting, artifact deployment and AWS EC2 provisioning.
+parking violations since January 2016. By completing this exercise, 
+demonstrating mastery of principles of containerization, terminal navigation, 
+python scripting, artifact deployment and AWS EC2 provisioning will be inclued.
 ```
 
 *readme format credit to [jng985](https://github.com/jng985/parking_violations)
