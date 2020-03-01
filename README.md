@@ -14,7 +14,7 @@ python scripting, artifact deployment and AWS EC2 provisioning will be inclued.
 ## Part 1: Python Scripting
 
 
-### Use [Docker](https://www.docker.com/) to build the image.
+### Use [Docker](https://www.docker.com/) to build the image and run the python file in it.
 
 ```bash
 docker build -t nycvk:1.0 .
