@@ -1,7 +1,7 @@
 # New York City Parking Violations
 ```
 This project will load and then analyze a dataset containing millions of NYC 
-parking violations since January 2016. By completing this exercise, 
+parking violations since January 2016. By completing this project, 
 demonstrating mastery of principles of containerization, terminal navigation, 
 python scripting, artifact deployment and AWS EC2 provisioning will be inclued.
 ```
