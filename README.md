@@ -17,11 +17,16 @@ python scripting, artifact deployment and AWS EC2 provisioning will be inclued.
 ## Part 1: Python Scripting
 
 
-### Use [Docker](https://www.docker.com/) to build the image and run the python file in it.
+### Download the files and Use [Docker](https://www.docker.com/) to build the image and run the python file in it.
 
 ```bash
 docker build -t nycvk:1.0 .
 ```
+### Or pull it from [Dockerhub](https://hub.docker.com/repository/docker/lalagola/nyvio/) in Terminal：
+```bash
+docker pull lalagola/nyvio:1.0`
+```
+`
 - Command line for `Windows` User in `PowerShell`:
 ```console
 docker run -v "$(pwd):/app" -e APP_KEY=YOUR_APP_KEY -t lalagola/nyvio:1.0 python main.py --page_size=1000 --num_pages=4 --output=results2.json
