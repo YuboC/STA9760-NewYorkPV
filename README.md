@@ -24,7 +24,7 @@ docker build -t nycvk:1.0 .
 ```
 ### Or pull it from [Dockerhub](https://hub.docker.com/repository/docker/lalagola/nyvio/) in Terminal：
 ```bash
-docker pull lalagola/nyvio:1.0`
+docker pull lalagola/nyvio:1.0
 ```
 `
 - Command line for `Windows` User in `PowerShell`:
