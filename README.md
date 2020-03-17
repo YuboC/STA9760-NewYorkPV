@@ -68,6 +68,14 @@ docker run -v $(pwd):/app -e APP_KEY=YOUR_APP_KEY -t lalagola/nyvio:1.0 python m
   - If not provided, print results to stdout. 
   - If provided, write the data to the file `output`.
   
+### Example of the output:
+- Keys: `plate` `state` `license_type` `summons_number` `issue_date` `summons_image` `description`
+```json
+{'plate': '2602DLM', 'state': 'NJ', 'license_type': 'PAS', 'summons_number': '8349024859', 'issue_date': '09/24/2016', 'summons_image': {'url': 'http://nycserv.nyc.gov/NYCServWeb/ShowImage?searchID=VDBSTk1FOVVRWGxPUkdjeFQxRTlQUT09&locationName=_____________________', 'description': 'View Summons'}}
+{'plate': '28565MH', 'state': 'NY', 'license_type': 'CSP', 'summons_number': '8349025189', 'issue_date': '09/28/2016', 'summons_image': {'url': 'http://nycserv.nyc.gov/NYCServWeb/ShowImage?searchID=VDBSTk1FOVVRWGxPVkVVMFQxRTlQUT09&locationName=_____________________', 'description': 'View Summons'}}
+
+```
+  
 ### Deploy to Dockerhub
 
 - Build docker image if necessary
