@@ -3,6 +3,8 @@
 [![GitHub forks](https://img.shields.io/github/forks/YuboC/STA9760-NewYorkPV.svg?style=flat&label=Fork)](https://github.com/YuboC/STA9760-NewYorkPV/fork)
 [![GitHub watchers](https://img.shields.io/github/watchers/YuboC/STA9760-NewYorkPV.svg?style=flat&label=Watch)](https://github.com/YuboC/STA9760-NewYorkPV/watchers)
 
+![](https://github.com/YuboC/STA9760-NewYorkPV/blob/master/Part3_visualization/Visualization.PNG)
+
 ![](https://media.giphy.com/media/44VMzCwVi6iEU/giphy.gif)
 
 ```
