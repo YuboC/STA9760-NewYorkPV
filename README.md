@@ -265,5 +265,8 @@ $ docker-compose run -e APP_KEY=$soda_token -v $(PWD):/app pyth python -m main -
 
 ## Part 3: Visualizing and Analysis on Kibana	
 
+![](https://github.com/YuboC/STA9760-NewYorkPV/blob/master/Part3_visualization/Turn_on_query_features.PNG)
+![](https://github.com/YuboC/STA9760-NewYorkPV/blob/master/Part3_visualization/configure_settings.png)
+![](https://github.com/YuboC/STA9760-NewYorkPV/blob/master/Part3_visualization/Visualization.PNG)
 
 ## Part 4: Deploying to EC2 Instance	
