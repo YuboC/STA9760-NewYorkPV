@@ -26,7 +26,7 @@ docker build -t nycvk:1.0 .
 ```
 ### Or pull it from [Dockerhub](https://hub.docker.com/repository/docker/lalagola/nyvio/) in Terminal：
 ```bash
-docker pull lalagola/nyvio:1.0
+docker pull lalagola/nyvio:2.0
 ```
 `
 - Command line for `Windows` User in `PowerShell`:
@@ -161,7 +161,107 @@ Note: When using docker **within** the EC2 instance, the `sudo` command **must**
   
   
 ## Part 2: Loading into ElasticSearch	
+```
+In this second part, we want to leverage docker-compose to bring up a service that encapsulates 
+our bigdata1 container and an  elasticsearch container and ensures that they are able to interact. 
+```
+### Download or Pull from DockerHub
 
+### Command Line:
+```console
+$ docker run -t nyvio_part2:1.0
+
+$ docker-compose run -e APP_KEY=$soda_token -v $(PWD):/app pyth python -m main --page_size=100 --num_pages=1000 --output=./out/results.json --push_elastic=True
+```
+- `-e APP_KEY=`: value behind it been created as environment variable
+- `-v $(pwd):/app`: mount the current folder to container to sync any changes from local file to file in container
+- `pyth python -m main`: run main.py in python image
+
+### WorkFlow after command above：
+- 1.  run `main.py`:
+  ```python
+  import os
+  import argparse
+  from src.bigdata1.api import get_data
+
+  if __name__ == "__main__":
+
+    app_key = os.getenv(f'APP_KEY')
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--page_size", type=int)
+    parser.add_argument("--num_pages", default=None, type=int)
+    parser.add_argument("--output", default=None)
+    parser.add_argument("--push_elastic", default=False, type=bool)
+    args = parser.parse_args()
+
+    data=get_data(app_key, args.page_size, args.num_pages,args.push_elastic)
+    with open(args.output, "w") as file: 	
+      for lis in data:
+        for dic in lis:
+          file.write(f"{dic}"+'\n')
+  ```
+- 2. run function: `get_data(app_key, args.page_size, args.num_pages, args.push_elastic)` from `api.py`
+- 3. run `part2/src/bigdata1/api.py`
+  ```python
+  from sodapy import Socrata
+  from src.bigdata1.elasticresearch import create_and_update_index, push_data
+
+  #Store the data id and domain corresponding to NYC parking violation API
+  domain = "data.cityofnewyork.us"
+  dataset_id = 'nc67-uf89'
+
+  def get_data(app_key,page_size,num_pages, push_elastic):
+    results = []
+    client = Socrata(domain,app_key)
+
+	#count the total number of the rows in the API
+	rows = int(client.get(dataset_id, select='COUNT(*)')[0]['COUNT'])
+
+	if not num_pages:
+		num_pages = rows // page_size + 1
+
+	if push_elastic:
+		es = create_and_update_index('bigdata1')
+	
+	for x in range(0, num_pages):
+		data_cache = client.get(dataset_id, limit=page_size, offset=x*(page_size))
+		results.append(data_cache)
+		for data in data_cache:
+			if push_elastic:
+				push_data(data,es,'bigdata1')
+	return results
+  ```
+ - 4. run `part2/src/bigdata1/elasticsearch.py`
+ ```python
+    from datetime import datetime, date
+    from elasticsearch import Elasticsearch
+    from requests import get
+
+    #create an index
+    def create_and_update_index(index_name):
+      es = Elasticsearch()
+      try:
+        es.indices.create(index=index_name)
+      except Exception:
+        pass
+      return es
+
+    #Format data from API
+    def data_format(data):
+      for key,value in data.items():
+        if 'amount' in key:
+          data[key] = float(value)
+        elif 'number' in key:
+          data[key] = int(value)
+        elif 'date' in key:
+          data[key] = datetime.strptime(data[key], '%m/%d/%Y').date()
+
+    #push 
+    def push_data(data,es,index):
+      data_format(data)
+      data = es.index(index=index,body=data,id = data['summons_number'])
+   ``` 
 
 ## Part 3: Visualizing and Analysis on Kibana	
 
