@@ -107,12 +107,10 @@ docker run -v $(pwd):/app -e APP_KEY=YOUR_APP_KEY -t lalagola/nyvio:1.0 python m
 In this second part, we want to leverage docker-compose to bring up a service that encapsulates 
 our bigdata1 container and an  elasticsearch container and ensures that they are able to interact. 
 ```
-### Download or Pull from DockerHub
+### Download from Github
 
 ### Command Line:
 ```console
-$ docker run -t nyvio_part2:1.0
-
 $ docker-compose run -e APP_KEY=$soda_token -v $(PWD):/app pyth python -m main --page_size=100 --num_pages=1000 --output=./out/results.json --push_elastic=True
 ```
 - `-e APP_KEY=`: value behind it been created as environment variable
