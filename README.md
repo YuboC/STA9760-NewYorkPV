@@ -100,65 +100,7 @@ docker run -v $(pwd):/app -e APP_KEY=YOUR_APP_KEY -t lalagola/nyvio:1.0 python m
   $ docker push lalagola/nycvk
   ```
 
-### EC2
 
-#### ssh into EC2
-
-- Change directory to the folder containing `.pem` file
-
-- Change `.pem` file permissions to **read-only**
-  ```console
-  $ chmod 0400 {*Insert .pem File*}
-  ```
-
-- ssh into the EC2 instance
-  ```console
-  $ ssh -i {*Insert .pem File*} ubuntu@{*Insert Public IP*}
-  ```
-#### Docker setup 
-
-Note: When using docker **within** the EC2 instance, the `sudo` command **must** be run. It is possible to make it so that it isn't required, but this is the case "out of the box".
-
-- Update and install `docker.io`
-  ```console
-  $ sudo apt-get update
-  $ sudo apt install docker.io
-  ```
-
-- Log in and pull docker image
-  ```console
-  $ sudo docker login --username=lalagola
-  $ sudo docker pull lalagola/nyvio:1.0
-  ```
-
-- Export environment variable `APP_KEY`
-  ```console
-  $ export APP_KEY={*Insert App Token*}
-  ```
-
-#### Run docker modules
-
-- `sudo docker run`
-
-  - `-e APP_KEY=${APP_KEY}`
-  
-  - `-v ${PWD}:/app/out`
-  
-    - This loads the current working directory into the `out` directory within the docker container
-    
-  - `-it lalagola/nyvio:1.0`
-  
-  - `python -m main` 
-  
-    - `--page_size={*Insert Page Size*}` 
-    
-    - `--num_pages={*Insert Num Pages*}`
-    
-    - `--output=./out/{*Insert Output Filename*}`
-  
-  - if `page_size` and `num_pages` are given, `page_size` * `num_pages` should be printed to stdout
-  
-  
   
 ## Part 2: Loading into ElasticSearch	
 ```
@@ -270,3 +212,62 @@ $ docker-compose run -e APP_KEY=$soda_token -v $(PWD):/app pyth python -m main -
 ![](https://github.com/YuboC/STA9760-NewYorkPV/blob/master/Part3_visualization/Visualization.PNG)
 
 ## Part 4: Deploying to EC2 Instance	
+
+### EC2
+
+#### ssh into EC2
+
+- Change directory to the folder containing `.pem` file
+
+- Change `.pem` file permissions to **read-only**
+  ```console
+  $ chmod 0400 {*Insert .pem File*}
+  ```
+
+- ssh into the EC2 instance
+  ```console
+  $ ssh -i {*Insert .pem File*} ubuntu@{*Insert Public IP*}
+  ```
+#### Docker setup 
+
+Note: When using docker **within** the EC2 instance, the `sudo` command **must** be run. It is possible to make it so that it isn't required, but this is the case "out of the box".
+
+- Update and install `docker.io`
+  ```console
+  $ sudo apt-get update
+  $ sudo apt install docker.io
+  ```
+
+- Log in and pull docker image
+  ```console
+  $ sudo docker login --username=lalagola
+  $ sudo docker pull lalagola/nyvio:1.0
+  ```
+
+- Export environment variable `APP_KEY`
+  ```console
+  $ export APP_KEY={*Insert App Token*}
+  ```
+
+#### Run docker modules
+
+- `sudo docker run`
+
+  - `-e APP_KEY=${APP_KEY}`
+  
+  - `-v ${PWD}:/app/out`
+  
+    - This loads the current working directory into the `out` directory within the docker container
+    
+  - `-it lalagola/nyvio:1.0`
+  
+  - `python -m main` 
+  
+    - `--page_size={*Insert Page Size*}` 
+    
+    - `--num_pages={*Insert Num Pages*}`
+    
+    - `--output=./out/{*Insert Output Filename*}`
+  
+  - if `page_size` and `num_pages` are given, `page_size` * `num_pages` should be printed to stdout
+  
