@@ -204,9 +204,35 @@ $ docker-compose run -e APP_KEY=$soda_token -v $(PWD):/app pyth python -m main -
    ``` 
 
 ## Part 3: Visualizing and Analysis on Kibana	
+## Visit `localhost:9200` to check Elasticsearch avaliable with the following feedback:
+```
+{
+  "name" : "ApGsh9y",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "_kOj-Nj3QtezpYoadBusuQ",
+  "version" : {
+    "number" : "6.3.2",
+    "build_flavor" : "default",
+    "build_type" : "tar",
+    "build_hash" : "053779d",
+    "build_date" : "2018-07-20T05:20:23.451332Z",
+    "build_snapshot" : false,
+    "lucene_version" : "7.3.1",
+    "minimum_wire_compatibility_version" : "5.6.0",
+    "minimum_index_compatibility_version" : "5.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
+## Visit `localhost:5601` to connect Kibana
 
+- Turn on query features
 ![](https://github.com/YuboC/STA9760-NewYorkPV/blob/master/Part3_visualization/Turn_on_query_features.PNG)
+
+- Configure settings
 ![](https://github.com/YuboC/STA9760-NewYorkPV/blob/master/Part3_visualization/configure_settings.png)
+
+- Add Visualizations to Dashboard
 ![](https://github.com/YuboC/STA9760-NewYorkPV/blob/master/Part3_visualization/Visualization.PNG)
 
 ## Part 4: Deploying to EC2 Instance	
