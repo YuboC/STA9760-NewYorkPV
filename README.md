@@ -111,7 +111,7 @@ our bigdata1 container and an  elasticsearch container and ensures that they are
 
 ### Command Line:
 ```console
-$ docker-compose run -e APP_KEY=$soda_token -v $(PWD):/app pyth python -m main --page_size=100 --num_pages=1000 --output=./out/results.json --push_elastic=True
+$ docker-compose run -e APP_KEY=$soda_token -v $(PWD):/app pyth python -m main --page_size=100 --num_pages=1000 --output=./out/results.json
 ```
 - `-e APP_KEY=`: value behind it been created as environment variable
 - `-v $(pwd):/app`: mount the current folder to container to sync any changes from local file to file in container
@@ -237,6 +237,8 @@ $ docker-compose run -e APP_KEY=$soda_token -v $(PWD):/app pyth python -m main -
 
 ## Part 4: Deploying to EC2 Instance	
 
+### Push  to Dokcer Hub 
+
 ### EC2
 
 #### ssh into EC2
@@ -274,6 +276,10 @@ Note: When using docker **within** the EC2 instance, the `sudo` command **must**
   ```
 
 #### Run docker modules
+```console
+ tanaydocker/bigdata1
+sudo docker run -v $(PWD):/app/out -e APP_TOKEN=${APP_TOKEN}  -it lalagola/part2:5.0 python -m main --page_size=2 --num_pages=5 --output=./out/results.json
+```
 
 - `sudo docker run`
 
