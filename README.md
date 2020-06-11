@@ -294,6 +294,11 @@ $ docker-compose run -e APP_KEY=$soda_token -v $(PWD):/app pyth python -m main -
 
 - Add Visualizations to Dashboard
 ![](https://github.com/YuboC/STA9760-NewYorkPV/blob/master/Part3_visualization/Visualization.PNG)
+ - Time-series chart:
+ ```consel
+ .es(index=nyc, timefield=Date, metric=count).points(fill=5).color(pink).label(‘Count’).yaxis(label=“Count”), 
+ .es(index=nyc, timefield=Date,metric=count).movingaverage(12).lines().color(aqua).label(‘Movingaverage’)
+ ```
 
 ## Part 4: Deploying to EC2 Instance	
 
