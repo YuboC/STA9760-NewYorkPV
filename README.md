@@ -14,7 +14,6 @@ demonstrating mastery of principles of containerization, terminal navigation,
 python scripting, artifact deployment and AWS EC2 provisioning will be inclued.
 ```
 
-*readme format credit to [jng985](https://github.com/jng985/parking_violations)
 
 ## Part 1: Python Scripting
 
