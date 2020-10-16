@@ -15,9 +15,6 @@ python scripting, artifact deployment and AWS EC2 provisioning will be inclued.
 ```
 
 
-## Part 1: Python Scripting
-
-
 ### Download the files and Use [Docker](https://www.docker.com/) to build the image and run the python file in it.
 
 ```bash
@@ -77,7 +74,9 @@ docker run -v $(pwd):/app -e APP_KEY=YOUR_APP_KEY -t lalagola/nyvio:1.0 python m
 {'plate': '28565MH', 'state': 'NY', 'license_type': 'CSP', 'summons_number': '8349025189', 'issue_date': '09/28/2016', 'summons_image': {'url': 'http://nycserv.nyc.gov/NYCServWeb/ShowImage?searchID=VDBSTk1FOVVRWGxPVkVVMFQxRTlQUT09&locationName=_____________________', 'description': 'View Summons'}}
 
 ```
-  
+
+## Part 1: Python Scripting
+
 ### Deploy to Dockerhub
 
 - Build docker image if necessary
