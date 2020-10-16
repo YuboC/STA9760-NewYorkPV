@@ -27,15 +27,7 @@ docker build -t nycvk:1.0 .
 ```bash
 docker pull lalagola/nyvio:2.0
 ```
-`
-- Command line for `Windows` User in `PowerShell`:
-```console
-docker run -v "$(pwd):/app" -e APP_KEY=YOUR_APP_KEY -t lalagola/nyvio:1.0 python main.py --page_size=1000 --num_pages=4 --output=results2.json
-```
-- Command line for `Mac` User in `Terminal`:
-```console
-docker run -v $(pwd):/app -e APP_KEY=YOUR_APP_KEY -t lalagola/nyvio:1.0 python main.py --page_size=1000 --num_pages=4 --output=results2.json
-```
+  
 ### File Structure
   ```console
   .
@@ -49,7 +41,16 @@ docker run -v $(pwd):/app -e APP_KEY=YOUR_APP_KEY -t lalagola/nyvio:1.0 python m
 
   2 directories, 4 files
   ```
-
+  
+### Extract the violation data into `json` file by running following command
+- Command line for `Windows` User in `PowerShell`:
+```console
+docker run -v "$(pwd):/app" -e APP_KEY=YOUR_APP_KEY -t lalagola/nyvio:1.0 python main.py --page_size=1000 --num_pages=4 --output=results2.json
+```
+- Command line for `Mac` User in `Terminal`:
+```console
+docker run -v $(pwd):/app -e APP_KEY=YOUR_APP_KEY -t lalagola/nyvio:1.0 python main.py --page_size=1000 --num_pages=4 --output=results2.json
+```
 #### Arguments
 
 - `--page_size`: 
